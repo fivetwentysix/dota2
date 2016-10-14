@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	dReq := dota2.NewDota2Request("YOUR_STEAM_API_KEY")
+	dReq := dota2.NewDota2Request("B517D45BAA8299DF3BFFFB67066A41B4")
 	// res, err := dReq.GetLeagueListing()
 	// res, err := dReq.GetLiveLeagueGames()
 	res, err := dReq.GetMatchDetails(2589101809)

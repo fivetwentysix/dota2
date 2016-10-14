@@ -1,3 +1,3 @@
 # Dota 2
 
-This is an attempt at creating a Dota2 API wrapper in Go.
+This is a wrapper for the  [Dota2 API](https://wiki.teamfortress.com/wiki/WebAPI#Dota_2).

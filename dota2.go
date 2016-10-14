@@ -3,7 +3,6 @@ package dota2
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 )
@@ -31,7 +30,7 @@ func NewDota2Request(sAPI string) Dota2Request {
 // RequestSend sends the request to the specified endpoint
 func (d *Dota2Request) RequestSend() (*Dota2Response, error) {
 	if len(d.APIEnd) == 0 {
-		return nil, errors.New("need to specify an endpoint for the api call")
+		return nil, errors.New("need to specify an endpoint for the API call")
 	}
 	url := d.APIBase + d.APIEnd + "?key=" + d.SteamAPIKey + "&language=english"
 	if d.Param != "" {
@@ -45,8 +44,10 @@ func (d *Dota2Request) RequestSend() (*Dota2Response, error) {
 	}
 	defer resp.Body.Close()
 	var drResp Dota2Response
-	body, _ := ioutil.ReadAll(resp.Body)
-	fmt.Println(string(body))
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
 	json.Unmarshal(body, &drResp)
 	return &drResp, nil
 }

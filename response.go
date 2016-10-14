@@ -9,6 +9,7 @@ type Dota2Response struct {
 type Result struct {
 	Leagues []League `json:"leagues"`
 	Games   []Game
+	Players []Player
 }
 
 type League struct {
@@ -67,26 +68,48 @@ type Player struct {
 	HeroId           int     `json:"hero_id"`
 	PlayerSlot       int     `json:"player_slot"`
 	Kills            int     `json:"kills"`
-	Death            int     `json:"death"`
+	Deaths           int     `json:"deaths"`
 	Assists          int     `json:"assists"`
 	LastHits         int     `json:"last_hits"`
 	Denies           int     `json:"denies"`
 	Gold             int     `json:"gold"`
 	Level            int     `json:"level"`
 	GoldPerMin       int     `json:"gold_per_min"`
+	GoldSpent        int     `json:"gold_spent"`
 	XPPerMin         int     `json:"xp_per_min"`
+	HeroDamage       int     `json:"hero_damage"`
+	TowerDamage      int     `json:"tower_damage"`
+	HeroHealing      int     `json:"hero_healing"`
 	UltimateState    int     `json:"ultimate_state"`
 	UltimateCooldown int     `json:"ultimate_cooldown"`
-	Item0            int     `json:"item0"`
-	Item1            int     `json:"item1"`
-	Item2            int     `json:"item2"`
-	Item3            int     `json:"item3"`
-	Item4            int     `json:"item4"`
-	Item5            int     `json:"item5"`
+	Item0            int     `json:"item_0"`
+	Item1            int     `json:"item_1"`
+	Item2            int     `json:"item_2"`
+	Item3            int     `json:"item_3"`
+	Item4            int     `json:"item_4"`
+	Item5            int     `json:"item_5"`
 	RespawnTimer     int     `json:"respawn_timer"`
 	PositionX        float64 `json:"position_x"`
 	PositionY        float64 `json:"position_y"`
 	NetWorth         int     `json:"net_worth"`
+	LeaverStatus     int     `json:"leaver_status"`
+
+	AbilityUpgrade struct {
+		Ability int `json:"ability"`
+		Time    int `json:"time"`
+		Level   int `json:"level"`
+	} `json:"ability_upgrades"`
+
+	AbilityUnits struct {
+		UnitName string `json:"unitname"`
+		Item1    int    `json:"item_1"`
+		Item2    int    `json:"item_2"`
+		Item3    int    `json:"item_3"`
+		Item4    int    `json:"item_4"`
+		Item5    int    `json:"item_5"`
+	} `json:"ability_upgrades"`
+
+	Season string `json:"season"`
 
 	Team int
 	Name string
