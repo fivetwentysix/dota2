@@ -4,7 +4,7 @@ This is a wrapper for the  [Dota2 API](https://wiki.teamfortress.com/wiki/WebAPI
 
 Example:
 
-```golang
+```go
 package main
 
 import (
