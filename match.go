@@ -42,7 +42,12 @@ func (d *Dota2Request) GetMatchDetails(id int) (*Dota2Response, error) {
 // GetMatchHistory returns a list of matches,
 // filterable by various parameters
 func (d *Dota2Request) GetMatchHistory() {
-
+	d.APIEnd = "/IDOTA2Match_570/GetMatchHistory/V001/"
+	res, err := d.RequestSend()
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
 }
 
 // GetMatchHistoryBySequenceNum returns a list of
