@@ -30,7 +30,7 @@ func (d *Dota2Request) GetLiveLeagueGames() (*Dota2Response, error) {
 // GetMatchDetails return information about a
 // particular match
 func (d *Dota2Request) GetMatchDetails(id int) (*Dota2Response, error) {
-	d.APIEnd = "/IDOTA2Match_570/GetMatchDetails/v1/"
+	d.APIEnd = "/IDOTA2Match_570/GetMatchDetails/v001/"
 	d.Param = fmt.Sprintf("match_id=%d", id)
 	res, err := d.RequestSend()
 	if err != nil {
@@ -41,7 +41,7 @@ func (d *Dota2Request) GetMatchDetails(id int) (*Dota2Response, error) {
 
 // GetMatchHistory returns a list of matches,
 // filterable by various parameters
-func (d *Dota2Request) GetMatchHistory() {
+func (d *Dota2Request) GetMatchHistory() (*Dota2Response, error) {
 	d.APIEnd = "/IDOTA2Match_570/GetMatchHistory/V001/"
 	res, err := d.RequestSend()
 	if err != nil {

@@ -3,17 +3,22 @@ package main
 import (
 	"fmt"
 
-	"github.com/jesusgalvan/dota2"
+	"encoding/json"
+	"os"
+
+	"github.com/fivetwentysix/dota2"
 )
 
 func main() {
-	dReq := dota2.NewDota2Request("YOUR_API_KEY")
+	dReq := dota2.NewDota2Request(os.Getenv("STEAM_API_KEY"))
 	// res, err := dReq.GetLeagueListing()
 	// res, err := dReq.GetLiveLeagueGames()
-	res, err := dReq.GetMatchDetails(2589101809)
+	res, err := dReq.GetMatchDetails(2826037294)
 	if err != nil {
 		fmt.Print(err)
 	}
 
-	fmt.Printf("%+v", res)
+	output, _ := json.MarshalIndent(res, "", "  ")
+
+	fmt.Println(string(output))
 }

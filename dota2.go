@@ -3,7 +3,6 @@ package dota2
 import (
 	"encoding/json"
 	"errors"
-	"io/ioutil"
 	"net/http"
 )
 
@@ -44,10 +43,10 @@ func (d *Dota2Request) RequestSend() (*Dota2Response, error) {
 	}
 	defer resp.Body.Close()
 	var drResp Dota2Response
-	body, err := ioutil.ReadAll(resp.Body)
+	decoder := json.NewDecoder(resp.Body)
+	err = decoder.Decode(&drResp)
 	if err != nil {
 		return nil, err
 	}
-	json.Unmarshal(body, &drResp)
 	return &drResp, nil
 }
